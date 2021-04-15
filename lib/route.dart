@@ -1,5 +1,5 @@
 /**
- * Annotation class that supports you annotate a route page with @ARoute
+ * Annotation class that supports you annotate a route page with @MNRoute
  */
 class MNRouter {
   /**
@@ -14,7 +14,7 @@ class MNRouter {
 }
 
 /**
- * Annotation class that supports you annotate your own router class @ARouteRoot
+ * Annotation class that supports you annotate your own router class @MNRouteRoot
  */
 class MNRouteRoot {
   const MNRouteRoot();

@@ -6,21 +6,21 @@ a router config mapping solution based on source_gen through annotation
 
 # Usage
 
-1. **Notice:** your page should own a constuctor that can be initialized with unique param, then Annotate the page class with @ARoute  
+1. **Notice:** your page should own a constuctor that can be initialized with unique param, then Annotate the page class with @MNRoute
    example:
 
    ```Dart
-   @ARoute(url: 'myapp://pagea')
+   @MNRoute(url: 'myapp://pagea')
    class A {
     A(MyRouteOption option): super();
    }
    ```
 
-2. Annotate **your own router class** with **@ARouteRoot**  
+2. Annotate **your own router class** with **@MNRouteRoot**
    example:
 
    ```Dart
-   @ARouteRoot()
+   @MNRouteRoot()
    class MyRouter {}
    ```
 
@@ -42,12 +42,12 @@ a router config mapping solution based on source_gen through annotation
    example:
 
    ```Dart
-   @ARouteRoot()
+   @MNRouteRoot()
    class Router {
-    ARouterInternal internal = ARouterInternalImpl();
+    MNRouterInternal internal = MNRouterInternalImpl();
     dynamic getPage(MyRouteOption option) {
       return internal.findPage(
-          ARouteOption(option.urlpattern, option.params), option);
+          MNRouteOption(option.urlpattern, option.params), option);
     }
    }
 
@@ -90,21 +90,21 @@ dev_dependencies:
 
 # 使用
 
-1. **注意**: 你的页面应该实现指定的构造器，一个接受唯一参数的构造器，然后使用@ARoute 注解你的页面类  
+1. **注意**: 你的页面应该实现指定的构造器，一个接受唯一参数的构造器，然后使用@MNRoute 注解你的页面类
    例：
 
    ```Dart
-   @ARoute(url: 'myapp://pagea')
+   @MNRoute(url: 'myapp://pagea')
    class A {
     A(MyRouteOption option): super();
    }
    ```
 
-2. 使用 **@ARouteRoot** 注解 **你自己**的 router 类
+2. 使用 **@MNRouteRoot** 注解 **你自己**的 router 类
    例：
 
    ```Dart
-   @ARouteRoot()
+   @MNRouteRoot()
    class MyRouter {}
    ```
 
@@ -126,12 +126,12 @@ dev_dependencies:
    例：
 
    ```Dart
-   @ARouteRoot()
+   @MNRouteRoot()
    class Router {
-    ARouterInternal internal = ARouterInternalImpl();
+    MNRouterInternal internal = MNRouterInternalImpl();
     dynamic getPage(MyRouteOption option) {
       return internal.findPage(
-          ARouteOption(option.urlpattern, option.params), option);
+          MNRouteOption(option.urlpattern, option.params), option);
     }
    }
 

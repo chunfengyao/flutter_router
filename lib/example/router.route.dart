@@ -3,7 +3,7 @@ import 'router.route.internal.dart';
 
 @MNRouteRoot()
 class Router {
-  MNRouterInternal internal = ARouterInternalImpl();
+  MNRouterInternal internal = MNRouterInternalImpl();
   dynamic getPage(MyRouteOption option) {
     return internal.findPage(
         MNRouteOption(option.urlpattern, option.params), option);
