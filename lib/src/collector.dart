@@ -39,16 +39,6 @@ class Collector {
     if (path != null) {
       addEntryFromPageConfig(annotation, element);
     }
-    final ConstantReader alias = annotation.peek('alias');
-    if (alias != null) {
-      final List<DartObject> aliasList = alias.listValue;
-      final Function addEntry = (DartObject one) {
-        final ConstantReader oneObj = ConstantReader(one);
-        addEntryFromPageConfig(oneObj, element);
-      };
-      aliasList.forEach(addEntry);
-    }
-
     if (buildStep.inputId.path.contains('lib/')) {
       importClazz(
           "package:${buildStep.inputId.package}/${buildStep.inputId.path.replaceFirst('lib/', '')}");
