@@ -10,7 +10,7 @@ a router config mapping solution based on source_gen through annotation
    example:
 
    ```Dart
-   @MNRoute(url: 'myapp://pagea')
+   @MNRoute(path: 'myapp://pagea')
    class A {
     A(MyRouteOption option): super();
    }
@@ -94,7 +94,7 @@ dev_dependencies:
    例：
 
    ```Dart
-   @MNRoute(url: 'myapp://pagea')
+   @MNRoute(path: 'myapp://pagea')
    class A {
     A(MyRouteOption option): super();
    }

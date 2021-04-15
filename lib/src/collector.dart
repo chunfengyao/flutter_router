@@ -28,15 +28,15 @@ class Collector {
   void collect(
       ClassElement element, ConstantReader annotation, BuildStep buildStep) {
     final String className = element.name;
-    final String url = annotation.peek('url')?.stringValue;
-    print('${url} url ---');
+    final String path = annotation.peek('path')?.stringValue;
+    print('path : ${path} ');
     // if (element.constructors.length > 0) {
     //   print('constructors displayName = ${element.constructors.first.displayName}');  
     //   print('constructors name = ${element.constructors.first.name}');  
     //   print('constructors type.parameters = ${element.constructors.first.type.parameters.first.type.name}');  
     // }
   
-    if (url != null) {
+    if (path != null) {
       addEntryFromPageConfig(annotation, element);
     }
     final ConstantReader alias = annotation.peek('alias');
@@ -58,12 +58,12 @@ class Collector {
   }
 
   void addEntryFromPageConfig(ConstantReader reader, ClassElement element) {
-    final String url = reader.peek('url')?.stringValue;
-    if (url != null) {
+    final String path = reader.peek('path')?.stringValue;
+    if (path != null) {
       final Map<String, dynamic> map =
           genPageConfigFromConstantReader(reader, element);
       if (map != null) {
-        addEntry("'${url}'", map);
+        addEntry("'${path}'", map);
       }
     }
   }

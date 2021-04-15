@@ -34,7 +34,7 @@ class Writer {
       // buffer.writeln('case ${clazz}: return new ${clazz}(option);');
     };
     collector.routerMap
-        .forEach((String url, List<Map<String, dynamic>> configList) {
+        .forEach((String path, List<Map<String, dynamic>> configList) {
       configList.forEach(writeClazzCase);
     });
     buffer..writeln('default:return null;')..writeln('}');
