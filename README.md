@@ -47,12 +47,12 @@ a router config mapping solution based on source_gen through annotation
     MNRouterInternal internal = MNRouterInternalImpl();
     dynamic getPage(MyRouteOption option) {
       return internal.findPage(
-          MNRouteOption(option.urlpattern, option.params), option);
+          MNRouteOption(option.pathPattern, option.params), option);
     }
    }
 
    class MyRouteOption {
-    String urlpattern;
+    String pathPattern;
     Map<String, dynamic> params;
    }
    ```
@@ -131,12 +131,12 @@ dev_dependencies:
     MNRouterInternal internal = MNRouterInternalImpl();
     dynamic getPage(MyRouteOption option) {
       return internal.findPage(
-          MNRouteOption(option.urlpattern, option.params), option);
+          MNRouteOption(option.pathPattern, option.params), option);
     }
    }
 
    class MyRouteOption {
-    String urlpattern;
+    String pathPattern;
     Map<String, dynamic> params;
    }
    ```

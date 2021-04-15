@@ -52,7 +52,7 @@ class MNRouterInternalImpl extends MNRouterInternal {
   }
 
   dynamic findPageConfig(MNRouteOption option) {
-    final List<Map<String, dynamic>> pageConfigList = innerRouterMap[option.urlpattern];
+    final List<Map<String, dynamic>> pageConfigList = innerRouterMap[option.pathPattern];
         if (null != pageConfigList) {
           for (int i = 0; i < pageConfigList.length; i++) {
             final Map<String, dynamic> pageConfig = pageConfigList[i];
