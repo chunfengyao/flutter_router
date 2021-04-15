@@ -3,7 +3,14 @@ description: auto generate router config
 version: 0.0.2+1
 author: voicewitness<voicewitness@gmail.com>
 homepage: https://github.com/alibaba-flutter/annotation_route
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.17.0 <2.0.0"
+
 dependencies:
+  flutter:
+    sdk: flutter
   analyzer: any
   build: any
   source_gen: '>=0.8.0'
@@ -13,5 +20,3 @@ dev_dependencies:
   build_runner: '>=0.9.1'
   test: any
 
-environment:
-  sdk: '>=2.0.0 <3.0.0'
