@@ -7,7 +7,7 @@ import '{{{path}}}';
 
 class MNRouterInternalImpl extends MNRouterInternal {
   MNRouterInternalImpl();
-  final Map<String, List<Map<String, dynamic>>> innerRouterMap = <String, List<Map<String, dynamic>>>{{{routerMap}}};
+  static final Map<String, List<Map<String, dynamic>>> innerRouterMap = <String, List<Map<String, dynamic>>>{{{routerMap}}};
 
   @override
   bool hasPageConfig(MNRouteOption option) {
@@ -25,15 +25,15 @@ class MNRouterInternalImpl extends MNRouterInternal {
     }
   }
 
-  void instanceCreated(dynamic clazzInstance, Map<String, dynamic> pageConfig) {
+  static void instanceCreated(dynamic clazzInstance, Map<String, dynamic> pageConfig) {
     {{{instanceCreated}}}
   }
 
-  dynamic instanceFromClazz(Type clazz, dynamic option) {
+  static dynamic instanceFromClazz(Type clazz, dynamic option) {
     {{{instanceFromClazz}}}
   }
 
-  MNRouterResult implFromPageConfig(Map<String, dynamic> pageConfig, dynamic option) {
+  static MNRouterResult implFromPageConfig(Map<String, dynamic> pageConfig, dynamic option) {
     final String interceptor = pageConfig['interceptor'];
     if(interceptor != null) {
       return MNRouterResult(state: MNRouterResultState.REDIRECT, interceptor: interceptor);
@@ -51,7 +51,7 @@ class MNRouterInternalImpl extends MNRouterInternal {
     }
   }
 
-  dynamic findPageConfig(MNRouteOption option) {
+  static dynamic findPageConfig(MNRouteOption option) {
     final List<Map<String, dynamic>> pageConfigList = innerRouterMap[option.pathPattern];
         if (null != pageConfigList) {
           for (int i = 0; i < pageConfigList.length; i++) {
