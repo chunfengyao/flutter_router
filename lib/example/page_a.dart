@@ -1,8 +1,8 @@
 import 'package:annotation_route/route.dart';
 
-@ARoute(url: 'myapp://pagea')
+@MNRouter('myapp://pagea')
 class A {
   int a;
   String b;
-  A(ARouteOption option) : super();
+  A(MNRouteOption option) : super();
 }

@@ -7,7 +7,7 @@ import '../route.dart';
 import 'collector.dart';
 import 'writer.dart';
 
-class RouteWriterGenerator extends GeneratorForAnnotation<ARouteRoot> {
+class RouteWriterGenerator extends GeneratorForAnnotation<MNRouteRoot> {
   Collector collector() {
     return RouteGenerator.collector;
   }
@@ -19,7 +19,7 @@ class RouteWriterGenerator extends GeneratorForAnnotation<ARouteRoot> {
   }
 }
 
-class RouteGenerator extends GeneratorForAnnotation<ARoute> {
+class RouteGenerator extends GeneratorForAnnotation<MNRouter> {
   static Collector collector = Collector();
 
   @override

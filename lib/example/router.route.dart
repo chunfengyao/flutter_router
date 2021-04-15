@@ -1,12 +1,12 @@
 import 'package:annotation_route/route.dart';
 import 'router.route.internal.dart';
 
-@ARouteRoot()
+@MNRouteRoot()
 class Router {
-  ARouterInternal internal = ARouterInternalImpl();
+  MNRouterInternal internal = ARouterInternalImpl();
   dynamic getPage(MyRouteOption option) {
     return internal.findPage(
-        ARouteOption(option.urlpattern, option.params), option);
+        MNRouteOption(option.urlpattern, option.params), option);
   }
 }
 

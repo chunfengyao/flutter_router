@@ -4,8 +4,8 @@ import 'package:build/build.dart';
 import 'src/route_generator.dart';
 
 Builder routeBuilder(BuilderOptions options) => LibraryBuilder(RouteGenerator(),
-    generatedExtension: '.internal_invalid.dart');
+    generatedExtension: '.g.dart');
 
 Builder routeWriteBuilder(BuilderOptions options) =>
     LibraryBuilder(RouteWriterGenerator(),
-        generatedExtension: '.internal.dart');
+        generatedExtension: '.manniu_router.g.dart');

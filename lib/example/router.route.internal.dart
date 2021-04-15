@@ -11,7 +11,7 @@ import 'package:annotation_route/example/page_d.dart';
 import 'package:annotation_route/example/page_c.dart';
 import 'package:annotation_route/example/page_b.dart';
 
-class ARouterInternalImpl extends ARouterInternal {
+class ARouterInternalImpl extends MNRouterInternal {
   ARouterInternalImpl();
   final Map<String, List<Map<String, dynamic>>> innerRouterMap =
       <String, List<Map<String, dynamic>>>{
@@ -33,18 +33,18 @@ class ARouterInternalImpl extends ARouterInternal {
   };
 
   @override
-  bool hasPageConfig(ARouteOption option) {
+  bool hasPageConfig(MNRouteOption option) {
     final dynamic pageConfig = findPageConfig(option);
     return pageConfig != null;
   }
 
   @override
-  ARouterResult findPage(ARouteOption option, dynamic initOption) {
+  MNRouterResult findPage(MNRouteOption option, dynamic initOption) {
     final dynamic pageConfig = findPageConfig(option);
     if (pageConfig != null) {
       return implFromPageConfig(pageConfig, initOption);
     } else {
-      return ARouterResult(state: ARouterResultState.NOT_FOUND);
+      return MNRouterResult(state: MNRouterResultState.NOT_FOUND);
     }
   }
 
@@ -66,30 +66,30 @@ class ARouterInternalImpl extends ARouterInternal {
     }
   }
 
-  ARouterResult implFromPageConfig(
+  MNRouterResult implFromPageConfig(
       Map<String, dynamic> pageConfig, dynamic option) {
     final String interceptor = pageConfig['interceptor'];
     if (interceptor != null) {
-      return ARouterResult(
-          state: ARouterResultState.REDIRECT, interceptor: interceptor);
+      return MNRouterResult(
+          state: MNRouterResultState.REDIRECT, interceptor: interceptor);
     }
     final Type clazz = pageConfig['clazz'];
     if (clazz == null) {
-      return ARouterResult(state: ARouterResultState.NOT_FOUND);
+      return MNRouterResult(state: MNRouterResultState.NOT_FOUND);
     }
     try {
       final dynamic clazzInstance = instanceFromClazz(clazz, option);
       instanceCreated(clazzInstance, pageConfig);
-      return ARouterResult(
-          widget: clazzInstance, state: ARouterResultState.FOUND);
+      return MNRouterResult(
+          widget: clazzInstance, state: MNRouterResultState.FOUND);
     } catch (e) {
-      return ARouterResult(state: ARouterResultState.NOT_FOUND);
+      return MNRouterResult(state: MNRouterResultState.NOT_FOUND);
     }
   }
 
-  dynamic findPageConfig(ARouteOption option) {
+  dynamic findPageConfig(MNRouteOption option) {
     final List<Map<String, dynamic>> pageConfigList =
-        innerRouterMap[option.urlpattern];
+        innerRouterMap[option.pathPattern];
     if (null != pageConfigList) {
       for (int i = 0; i < pageConfigList.length; i++) {
         final Map<String, dynamic> pageConfig = pageConfigList[i];

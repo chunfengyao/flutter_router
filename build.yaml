@@ -5,12 +5,12 @@ targets:
       annotation_route|route_builder:
         enabled: true
         generate_for:
-          exclude: ['**.internal.dart']
+          exclude: ['**.g.dart']
       annotation_route|route_write_builder:
         enabled: true
         options: { 'write': true }
         generate_for:
-          exclude: ['**.internal.dart']
+          exclude: ['**.g.dart']
 
 builders:
   route_write_builder:
