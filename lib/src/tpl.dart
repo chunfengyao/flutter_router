@@ -2,6 +2,7 @@ const String clazzTpl = """
 {{#refs}}
 import '{{{path}}}';
 {{/refs}}
+import 'package:flutter/widgets.dart';
 // import 'package:annotation_route/src/collector.dart';
 
 typedef CreatePageInstance =  dynamic Function();
@@ -15,7 +16,7 @@ class MNRouterImpl{
     return _routerMap.containsKey(path);
   }
 
-  static dynamic findPage(String path) {
+  static Widget findPage(String path) {
     CreatePageInstance func;
     if((func = _routerMap[path]) != null) {
       return func();
