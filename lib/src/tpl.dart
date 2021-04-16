@@ -3,9 +3,8 @@ const String clazzTpl = """
 import '{{{path}}}';
 {{/refs}}
 import 'package:flutter/widgets.dart';
-// import 'package:annotation_route/src/collector.dart';
 
-typedef CreatePageInstance =  dynamic Function();
+typedef CreatePageInstance =  Widget Function();
 
 class MNRouterImpl{
   MNRouterImpl._();
