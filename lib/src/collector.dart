@@ -6,12 +6,10 @@ import 'package:source_gen/source_gen.dart';
 import 'package:analyzer/dart/constant/value.dart';
 import 'page_config_map_util.dart';
 
-
-typedef CreatePageInstance =  dynamic Function();
 class Collector {
   Collector();
-  Map<String, CreatePageInstance> routerMap =
-      <String, CreatePageInstance>{};
+  Map<String, String> routerMap =
+      <String, String>{};
   List<String> importList = <String>[];
 
   Map<String, DartObject> toStringDartObjectMap(
@@ -29,9 +27,10 @@ class Collector {
 
   void collect(
       ClassElement element, ConstantReader annotation, BuildStep buildStep) {
-    // final String className = element.name;
+    final String className = element.name;
     final String path = annotation.peek('path')?.stringValue;
-    print('path : ${path} ');
+    //记录路径和被注解的类的类型
+    routerMap[path] = className;
     // if (element.constructors.length > 0) {
     //   print('constructors displayName = ${element.constructors.first.displayName}');  
     //   print('constructors name = ${element.constructors.first.name}');  

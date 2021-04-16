@@ -39,26 +39,13 @@ class Writer {
       refs.add(<String, String>{'path': path});
     };
     collector.importList.forEach(addRef);
+    String test = collector.routerMap.map((String key, dynamic element) {
+      return MapEntry('"${key}"', '() => ${element}()');
+    }).toString();
     return render(clazzTpl, <String, dynamic>{
       'refs': refs,
-      // 'instanceCreated': instanceCreated(),
-      // 'instanceFromClazz': instanceFromClazz(),
       'routerMap': collector.routerMap.map((String key, dynamic element) {
-        // if(element is List) {
-        //   List<Map> list = element.map<Map>((dynamic mapInList) {
-        //     if (mapInList is Map) {
-        //       return mapInList.map((lkey, lvalue) {
-        //         if (lvalue is ClassElement) {
-        //           return MapEntry(lkey, lvalue.name);
-        //         }
-        //         return MapEntry(lkey, lvalue);
-        //       });
-        //     }
-        //     return mapInList;
-        //   }).toList();
-        //   return MapEntry(key, list);
-        // }
-        return MapEntry(key, element);
+        return MapEntry('"${key}"', '() => ${element}()');
       }).toString()
     });
   }
