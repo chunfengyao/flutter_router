@@ -6,10 +6,12 @@ import 'package:source_gen/source_gen.dart';
 import 'package:analyzer/dart/constant/value.dart';
 import 'page_config_map_util.dart';
 
+
+typedef CreatePageInstance =  dynamic Function();
 class Collector {
   Collector();
-  Map<String, List<Map<String, dynamic>>> routerMap =
-      <String, List<Map<String, dynamic>>>{};
+  Map<String, CreatePageInstance> routerMap =
+      <String, CreatePageInstance>{};
   List<String> importList = <String>[];
 
   Map<String, DartObject> toStringDartObjectMap(
@@ -27,7 +29,7 @@ class Collector {
 
   void collect(
       ClassElement element, ConstantReader annotation, BuildStep buildStep) {
-    final String className = element.name;
+    // final String className = element.name;
     final String path = annotation.peek('path')?.stringValue;
     print('path : ${path} ');
     // if (element.constructors.length > 0) {
@@ -36,25 +38,11 @@ class Collector {
     //   print('constructors type.parameters = ${element.constructors.first.type.parameters.first.type.name}');  
     // }
   
-    if (path != null) {
-      addEntryFromPageConfig(annotation, element);
-    }
     if (buildStep.inputId.path.contains('lib/')) {
       importClazz(
           "package:${buildStep.inputId.package}/${buildStep.inputId.path.replaceFirst('lib/', '')}");
     } else {
       importClazz("${buildStep.inputId.path}");
-    }
-  }
-
-  void addEntryFromPageConfig(ConstantReader reader, ClassElement element) {
-    final String path = reader.peek('path')?.stringValue;
-    if (path != null) {
-      final Map<String, dynamic> map =
-          genPageConfigFromConstantReader(reader, element);
-      if (map != null) {
-        addEntry("'${path}'", map);
-      }
     }
   }
 
@@ -67,15 +55,6 @@ class Collector {
       map[wK('params')] = "${wK(json.encode(paramsMap))}";
     }
     return map;
-  }
-
-  void addEntry(String key, Map<String, dynamic> value) {
-    List<Map<String, dynamic>> list = routerMap[key];
-    if (null == list) {
-      list = <Map<String, dynamic>>[];
-      routerMap[key] = list;
-    }
-    list.add(value);
   }
 
   void importClazz(String path) {

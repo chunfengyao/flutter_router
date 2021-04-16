@@ -8,10 +8,6 @@ class Writer {
   Collector collector;
   Writer(this.collector);
 
-  String instanceCreated() {
-    return instanceCreatedTpl;
-  }
-
   String instanceFromClazz() {
     final StringBuffer buffer = new StringBuffer();
     buffer..writeln('switch(clazz) {');
@@ -33,10 +29,6 @@ class Writer {
       }
       // buffer.writeln('case ${clazz}: return new ${clazz}(option);');
     };
-    collector.routerMap
-        .forEach((String path, List<Map<String, dynamic>> configList) {
-      configList.forEach(writeClazzCase);
-    });
     buffer..writeln('default:return null;')..writeln('}');
     return buffer.toString();
   }
@@ -49,24 +41,23 @@ class Writer {
     collector.importList.forEach(addRef);
     return render(clazzTpl, <String, dynamic>{
       'refs': refs,
-      'instanceCreated': instanceCreated(),
-      'instanceFromClazz': instanceFromClazz(),
+      // 'instanceCreated': instanceCreated(),
+      // 'instanceFromClazz': instanceFromClazz(),
       'routerMap': collector.routerMap.map((String key, dynamic element) {
-        if(element is List) {
-          List<Map> list = element.map<Map>((dynamic mapInList) {
-            if (mapInList is Map) {
-              return mapInList.map((lkey, lvalue) {
-                if (lvalue is ClassElement) {
-                  print('---- ${lvalue.name}');
-                  return MapEntry(lkey, lvalue.name);
-                }
-                return MapEntry(lkey, lvalue);
-              });
-            }
-            return mapInList;
-          }).toList();
-          return MapEntry(key, list);
-        }
+        // if(element is List) {
+        //   List<Map> list = element.map<Map>((dynamic mapInList) {
+        //     if (mapInList is Map) {
+        //       return mapInList.map((lkey, lvalue) {
+        //         if (lvalue is ClassElement) {
+        //           return MapEntry(lkey, lvalue.name);
+        //         }
+        //         return MapEntry(lkey, lvalue);
+        //       });
+        //     }
+        //     return mapInList;
+        //   }).toList();
+        //   return MapEntry(key, list);
+        // }
         return MapEntry(key, element);
       }).toString()
     });
