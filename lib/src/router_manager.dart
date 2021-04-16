@@ -1,5 +1,14 @@
+/**
+ * <pre>
+ * Used to 路由管理类
+ * <pre/>
+ * created by:   yaochunfeng
+ * on:           2021/4/16 10:09 上午
+ * Email:        yaochunfeng@wondersgroup.com
+ *
+ */
 
-import 'package:build/build.dart';
+
 import 'package:flutter/widgets.dart';
 
 typedef FindPageFunc = Widget Function(String path);
