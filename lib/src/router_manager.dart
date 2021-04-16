@@ -26,30 +26,43 @@ class MNRouter{
     _groups.addAll({groupName: findPage});
   }
 
-  ///获取页面并跳转
+  ///跳转路由地址对应的页面并传递参数
   void pushRoute(String path,{dynamic params}){
     Widget page = getPage(path);
     if(page == null){
       throw Exception("${path}:该路由不存在！！！");
     }
+    pushWidgetRoute(page, params: params);
+  }
+
+  ///跳转页面并携带参数
+  void pushWidgetRoute(Widget page,{dynamic params}){
     //存储参数
     _paramsStorage.addAll({page.hashCode: params});
+    _pushRouteFunc(page);
   }
 
-  ///跳转页面
-  void pushWidgetRoute(Widget page,{dynamic params}){
-
-  }
-
-  ///获取页面并跳转
+  ///通过路由地址获取页面并跳转 TODO 增加判断，如果没获取到，则遍历整个map进行查找。
   Widget getPage(String path){
+    Widget page = _groups[getGroup(path)](path);
+    if(page == null){
+      for (MapEntry<String, FindPageFunc> entry in _groups.entries) {
+        if((page = entry.value(path)) != null){
+          break;
+        }
+      }
+    }
+    return page;
+  }
 
+  ///简易版的！！！TODO 增加判断和判空
+  String getGroup(String path){
+    return path.split("/")[0];
   }
 
   ///通过页面对象获取跳转时传递的参数对象
-  dynamic getParamsForPage(Widget pageObj){
+  dynamic getParamsForWidget(Widget pageObj){
     //通过pageObj的hashCode作为关键字！
     _paramsStorage[pageObj.hashCode];
   }
-
 }
