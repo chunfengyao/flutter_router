@@ -1,26 +1,26 @@
 import 'package:flutter/widgets.dart';
 
-typedef FindPageFunc = Widget Function(String path);
-typedef PushRouteFunc = void Function(Widget widget);
-typedef CreatePageInstance =  Widget Function();
+typedef MNRouterFindPage = Widget Function(String path);
+typedef MNRouterPushRoute = void Function(Widget widget);
+typedef MNRouterCreatePage =  Widget Function();
 
 /// <pre>
 /// Used to 路由管理类,用来获取页面实例、判断路由组、传递和获取页面参数。
 /// <pre/>
 class MNRouter{
-  static Map<String, FindPageFunc> _groups;
+  static Map<String, MNRouterFindPage> _groups;
   static Map<int, Widget> _paramsStorage;
   static final MNRouter _INSTANCE = MNRouter();
-  static PushRouteFunc _pushRouteFunc;
+  static MNRouterPushRoute _pushRouteFunc;
   get Instance => _INSTANCE;
 
   //注册路由跳转功能
-  static void init(PushRouteFunc pushRouteFunc){
+  static void init(MNRouterPushRoute pushRouteFunc){
     _pushRouteFunc = pushRouteFunc;
   }
 
   ///初始化路由（将子模块的路由传递给管理类，并且提供找页面的功能。）
-  void addGroup(String groupName, FindPageFunc findPage){
+  void addGroup(String groupName, MNRouterFindPage findPage){
     //如果groupName已经存在，则直接报错！！！
     if(_groups.containsKey(groupName)) {
       throw Exception("${groupName}:该路由已经存在了！！！");
@@ -49,7 +49,7 @@ class MNRouter{
   Widget getPage(String path){
     Widget page = _groups[getGroup(path)](path);
     if(page == null){
-      for (MapEntry<String, FindPageFunc> entry in _groups.entries) {
+      for (MapEntry<String, MNRouterFindPage> entry in _groups.entries) {
         if((page = entry.value(path)) != null){
           break;
         }
