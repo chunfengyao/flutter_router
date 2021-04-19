@@ -11,23 +11,17 @@ class MNRouter{
   static Map<String, MNRouterCreatePage> _groups;
   static Map<int, Widget> _paramsStorage;
   static final MNRouter _INSTANCE = MNRouter();
-  static MNRouterPushRoute _pushRouteFunc;
   get Instance => _INSTANCE;
 
-  //注册路由跳转功能
-  static void init(MNRouterPushRoute pushRouteFunc){
-    _pushRouteFunc = pushRouteFunc;
-  }
-
   ///初始化路由（将子模块的路由传递给管理类，并且提供找页面的功能。）
-  void addRouter(Map<String, MNRouterCreatePage> routerPageProvider){
+  static void addRouter(Map<String, MNRouterCreatePage> routerPageProvider){
     //如果groupName已经存在，则直接报错！！！
     //添加到路由列表
     _groups.addAll(routerPageProvider);
   }
 
   ///跳转路由地址对应的页面并传递参数
-  void pushRoute(String path,{dynamic params}){
+  static void pushRoute(String path,{dynamic params}){
     Widget page = getPage(path);
     if(page == null){
       throw Exception("${path}:该路由不存在！！！");
@@ -36,14 +30,13 @@ class MNRouter{
   }
 
   ///跳转页面并携带参数
-  void pushWidgetRoute(Widget page,{dynamic params}){
+  static void pushWidgetRoute(Widget page,{dynamic params}){
     //存储参数
     _paramsStorage.addAll({page.hashCode: params});
-    _pushRouteFunc(page);
   }
 
   ///通过路由地址获取页面并跳转 TODO 增加判断，如果没获取到，则遍历整个map进行查找。
-  Widget getPage(String path){
+  static Widget getPage(String path){
     MNRouterCreatePage pageCreater = _groups[path];
     if(pageCreater != null){
       return pageCreater();
@@ -52,7 +45,7 @@ class MNRouter{
   }
 
   ///通过页面对象获取跳转时传递的参数对象
-  Widget getParamsForWidget(Widget pageObj){
+  static Widget getParamsForWidget(Widget pageObj){
     //通过pageObj的hashCode作为关键字！
     _paramsStorage[pageObj.hashCode];
   }
