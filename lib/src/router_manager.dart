@@ -44,6 +44,11 @@ class MNRouter{
     return null;
   }
 
+  ///判断是否存在路由
+  static bool hasPage(String path){
+    return _groups.containsKey(path);
+  }
+
   ///通过页面对象获取跳转时传递的参数对象
   static Widget getParamsForWidget(Widget pageObj){
     //通过pageObj的hashCode作为关键字！
