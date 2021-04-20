@@ -4,7 +4,6 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:build/src/builder/build_step.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:analyzer/dart/constant/value.dart';
-import 'page_config_map_util.dart';
 
 class Collector {
   Collector();
@@ -12,18 +11,18 @@ class Collector {
       <String, String>{};
   List<String> importList = <String>[];
 
-  Map<String, DartObject> toStringDartObjectMap(
-      Map<DartObject, DartObject> map) {
-    return map.map((DartObject k, DartObject v) {
-      return MapEntry<String, DartObject>(k.toStringValue(), v);
-    });
-  }
+  // Map<String, DartObject> toStringDartObjectMap(
+  //     Map<DartObject, DartObject> map) {
+  //   return map.map((DartObject k, DartObject v) {
+  //     return MapEntry<String, DartObject>(k.toStringValue(), v);
+  //   });
+  // }
 
-  Map<String, String> toStringStringMap(Map<DartObject, DartObject> map) {
-    return map.map((DartObject k, DartObject v) {
-      return MapEntry<String, String>(k.toStringValue(), v.toStringValue());
-    });
-  }
+  // Map<String, String> toStringStringMap(Map<DartObject, DartObject> map) {
+  //   return map.map((DartObject k, DartObject v) {
+  //     return MapEntry<String, String>(k.toStringValue(), v.toStringValue());
+  //   });
+  // }
 
   void collect(
       ClassElement element, ConstantReader annotation, BuildStep buildStep) {
@@ -45,16 +44,16 @@ class Collector {
     }
   }
 
-  Map<String, dynamic> genPageConfigFromConstantReader(
-      ConstantReader reader, ClassElement element) {
-    final ConstantReader params = reader.peek('params');
-    final Map<String, dynamic> map = <String, dynamic>{wK('clazz'): element};
-    if (params != null) {
-      final Map<String, String> paramsMap = toStringStringMap(params.mapValue);
-      map[wK('params')] = "${wK(json.encode(paramsMap))}";
-    }
-    return map;
-  }
+  // Map<String, dynamic> genPageConfigFromConstantReader(
+  //     ConstantReader reader, ClassElement element) {
+  //   final ConstantReader params = reader.peek('params');
+  //   final Map<String, dynamic> map = <String, dynamic>{wK('clazz'): element};
+  //   if (params != null) {
+  //     final Map<String, String> paramsMap = toStringStringMap(params.mapValue);
+  //     map[wK('params')] = "${wK(json.encode(paramsMap))}";
+  //   }
+  //   return map;
+  // }
 
   void importClazz(String path) {
     importList.add(path);

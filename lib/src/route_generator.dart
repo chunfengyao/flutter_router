@@ -19,7 +19,7 @@ class RouteWriterGenerator extends GeneratorForAnnotation<MNRouteRoot> {
   }
 }
 
-class RouteGenerator extends GeneratorForAnnotation<MNRouter> {
+class RouteGenerator extends GeneratorForAnnotation<MNRoute> {
   static Collector collector = Collector();
 
   @override

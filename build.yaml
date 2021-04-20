@@ -1,16 +1,16 @@
 # Read about `build.yaml` at https://pub.dartlang.org/packages/build_config
-#targets:
-#  $default:
-#    builders:
-#      manniu_router|route_builder:
-#        enabled: true
-#        generate_for:
-#          exclude: ['**.g.dart']
-#      manniu_router|route_write_builder:
-#        enabled: true
-#        options: { 'write': true }
-#        generate_for:
-#          exclude: ['**.g.dart']
+targets:
+  $default:
+    builders:
+      manniu_router|route_builder:
+        enabled: true
+        generate_for:
+          exclude: ['**.g.dart']
+      manniu_router|route_write_builder:
+        enabled: true
+        options: { 'write': true }
+        generate_for:
+          exclude: ['**.g.dart']
 
 builders:
   route_write_builder:

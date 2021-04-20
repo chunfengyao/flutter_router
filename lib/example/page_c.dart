@@ -2,7 +2,7 @@ import 'package:manniu_router/route.dart';
 import 'package:flutter/widgets.dart';
 
 
-@MNRouter('/demo/pagec')
+@MNRoute('/demo/pagec')
 class C extends Widget{
   int a;
   String b;

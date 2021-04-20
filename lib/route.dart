@@ -1,7 +1,7 @@
 /**
  * Annotation class that supports you annotate a route page with @MNRoute
  */
-class MNRouter {
+class MNRoute {
   /**
    * Used to match a route, and will the first match condition
    */
@@ -10,7 +10,7 @@ class MNRouter {
    * Used to math a route
    */
   final Map<String, dynamic> params;
-  const MNRouter(this.path, {this.params});
+  const MNRoute(this.path, {this.params});
 }
 
 /**
