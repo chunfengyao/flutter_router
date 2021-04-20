@@ -3,8 +3,7 @@ import 'package:build/build.dart';
 
 import 'src/route_generator.dart';
 
-Builder routeBuilder(BuilderOptions options) => LibraryBuilder(RouteGenerator(),
-    generatedExtension: '.g.dart');
+Builder routeBuilder(BuilderOptions options) => LibraryBuilder(RouteGenerator());
 
 Builder routeWriteBuilder(BuilderOptions options) =>
     LibraryBuilder(RouteWriterGenerator(),

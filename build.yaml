@@ -16,14 +16,14 @@ builders:
   route_write_builder:
     import: 'package:manniu_router/builder.dart'
     builder_factories: ['routeWriteBuilder']
-    build_extensions: { '.route.dart': ['.manniu_router.g.dart'] }
+    build_extensions: {}
     auto_apply: root_package
     build_to: source
 
   route_builder:
     import: 'package:manniu_router/builder.dart'
     builder_factories: ['routeBuilder']
-    build_extensions: { '.dart': ['.manniu_router_invalid.g.dart'] }
+    build_extensions: { '.dart': ['.manniu_router.g.dart'] }
     auto_apply: root_package
     runs_before: ['manniu_router|route_write_builder']
     build_to: source
