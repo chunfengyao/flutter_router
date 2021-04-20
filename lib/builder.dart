@@ -3,7 +3,8 @@ import 'package:build/build.dart';
 
 import 'src/route_generator.dart';
 
-Builder routeBuilder(BuilderOptions options) => LibraryBuilder(RouteGenerator());
+Builder routeBuilder(BuilderOptions options) => LibraryBuilder(RouteGenerator()
+    , generatedExtension: '.manniu_router_part.g.dart');
 
 Builder routeWriteBuilder(BuilderOptions options) =>
     LibraryBuilder(RouteWriterGenerator(),

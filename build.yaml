@@ -16,9 +16,9 @@ builders:
   route_write_builder:
     import: 'package:manniu_router/builder.dart'
     builder_factories: ['routeWriteBuilder']
-    build_extensions: {}
+    build_extensions: { '.dart': ['.manniu_router_part.g.dart'] }
     auto_apply: root_package
-    build_to: source
+    build_to: cache
 
   route_builder:
     import: 'package:manniu_router/builder.dart'
