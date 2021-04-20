@@ -45,7 +45,7 @@ class Writer {
     return render(clazzTpl, <String, dynamic>{
       'refs': refs,
       'routerMap': collector.routerMap.map((String key, dynamic element) {
-        return MapEntry('"${key}"', '() => ${element}()');
+        return MapEntry('\'${key}\'', '() => ${element}()');
       }).toString()
     });
   }
