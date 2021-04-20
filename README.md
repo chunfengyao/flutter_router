@@ -8,7 +8,7 @@
    例：
 
    ```Dart
-   @MNRoute(path: '/module/pagePath')
+   @MNRoute(path: '/demo/pagePath')
    class A {
     A(MyRouteOption option): super();
    }

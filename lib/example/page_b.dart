@@ -2,7 +2,7 @@ import 'package:manniu_router/route.dart';
 import 'package:flutter/widgets.dart';
 
 
-@MNRouter('myapp://pageb', params: {'parama': 'b'})
+@MNRouter('/demo/pageb', params: {'parama': 'b'})
 class B extends Widget{
   int a;
   String b;
