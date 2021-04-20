@@ -22,7 +22,7 @@
    class MyRouter {}
    ```
 
-3. 在你的工作目录下运行 build_annotation_route.sh 脚本，或者运行如下命令:  
+3. 在你的工作目录下运行如下命令:
    build:
 
    ```shell

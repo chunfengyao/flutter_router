@@ -3,7 +3,7 @@ const String clazzTpl = """
 import '{{{path}}}';
 {{/refs}}
 import 'package:flutter/widgets.dart';
-import 'package:annotation_route/src/router_manager.dart';
+import 'package:manniu_router/src/router_manager.dart';
 
 class MNRouterImpl{
   MNRouterImpl._();
