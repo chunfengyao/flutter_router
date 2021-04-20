@@ -67,9 +67,9 @@
 ```yaml
 dev_dependencies:
   manniu_router:
-      git:
-        url: git@10.241.65.201:flutter/manniu-pub/manniu-router.git
-        ref: 022
+    git:
+      url: git@10.241.65.201:flutter/manniu-pub/manniu-router.git
+      ref: 022
 ```
 
 ## 从源码安装
