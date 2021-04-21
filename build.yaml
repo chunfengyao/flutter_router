@@ -5,12 +5,12 @@ targets:
       manniu_router|route_builder:
         enabled: true
         generate_for:
-          exclude: ['**.g.dart']
+          exclude: ['**.g.dart', '**.manniu_router_part.g.dart', '**.manniu_router.g.dart']
       manniu_router|route_write_builder:
         enabled: true
         options: { 'write': true }
         generate_for:
-          exclude: ['**.g.dart']
+          exclude: ['**.g.dart', '**.manniu_router_part.g.dart', '**.manniu_router.g.dart']
 
 builders:
   route_write_builder:
