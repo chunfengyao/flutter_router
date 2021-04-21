@@ -1,4 +1,3 @@
-import 'package:mustache4dart/mustache4dart.dart';
 import 'collector.dart';
 import 'tpl.dart';
 
@@ -31,14 +30,23 @@ class Writer {
   //   return buffer.toString();
   // }
 
+
+  ///处理模板（替换占位符号为指定内容）
+  String handleTemplete(String clazzTpl, Map<String, String> map) {
+    String result = clazzTpl;
+    map.forEach((String key, String value) {
+      result = result.replaceAll('{{{${key}}}}', value);
+    });
+    return result;
+  }
+
   String write() {
-    final List<Map<String, String>> refs = <Map<String, String>>[];
-    final Function addRef = (String path) {
-      refs.add(<String, String>{'path': path});
-    };
-    collector.importList.forEach(addRef);
-    return render(clazzTpl, <String, dynamic>{
-      'refs': refs,
+    String importBlock = '';
+    collector.importList.forEach((String path) {
+      importBlock += '\nimport \'${path}\';';
+    });
+    return handleTemplete(clazzTpl, <String, String>{
+      'import_block': importBlock,
       'routerMap': collector.routerMap.map((String key, dynamic element) {
         return MapEntry('\'${key}\'', '() => ${element}()');
       }).toString()

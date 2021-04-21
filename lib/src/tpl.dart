@@ -1,7 +1,5 @@
 const String clazzTpl = """
-{{#refs}}
-import '{{{path}}}';
-{{/refs}}
+{{{import_block}}}
 import 'package:flutter/widgets.dart';
 import 'package:manniu_router/src/router_function_define.dart';
 
