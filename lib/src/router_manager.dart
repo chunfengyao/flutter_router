@@ -42,7 +42,7 @@ class MNRouterManager {
   }
 
   ///为指定页面对象替换或者添加params，params允许为空：效果为移除现有参数。
-  static void putParams(Widget pageObj, {dynamic params}){
+  static void putParams(Widget pageObj, dynamic params){
     if(pageObj == null){
        return;
     }
