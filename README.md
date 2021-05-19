@@ -40,14 +40,6 @@
    例：
 
    ```Dart
-  static Map<String, MNRouterCreatePage> _routerMap = Map();
-  static Map<int, dynamic> _paramsStorage = Map();
-  static void addRouter(Map<String, MNRouterCreatePage> routerPageProvider){
-    //如果groupName已经存在，则直接报错！！！
-    //添加到路由列表
-    _routerMap.addAll(routerPageProvider);
-  }
-
   static Widget getPage(String path){
     MNRouterCreatePage pageCreater = _routerMap[path];
     if(pageCreater != null){
@@ -86,16 +78,21 @@ dev_dependencies:
   manniu_router:
     git:
       url: 'git@10.241.65.201:flutter/manniu-pub/manniu-router.git'
-      ref: '022'
+      ref: 'master'
 ```
 
 ## 从源码安装
 
-拷贝代码至你的工作目录，在你的 pubspec.yaml 文件下声明  
+拷贝代码至你的工作目录。
+或者在你的 pubspec.yaml 文件下声明。
 例：
 
 ```yaml
-dev_dependencies:
+dependencies:
   manniu_router:
     path: ./manniu-router
+
+dev_dependencies:
+  #这边需要声明build_runner才可以跑代码生成器。
+  build_runner:
 ```
