@@ -39,7 +39,7 @@
 4. 现在你可以使用它来进行路由管理了
    例：
 
-   ```Dart
+```Dart
   static Widget getPage(String path){
     MNRouterCreatePage pageCreater = _routerMap[path];
     if(pageCreater != null){
@@ -60,7 +60,7 @@
     //通过pageObj的hashCode作为关键字！
     return _paramsStorage.remove(pageObj.hashCode);
   }
-   ```
+```
    将上述生成的路由表。`_routerMap_`包装注册给App的`onGenerateRoute: PbRouterConfig.generator`
 
 5. 具体代码可以参考 lib/example/\*下的文件
