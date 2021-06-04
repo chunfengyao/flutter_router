@@ -25,9 +25,9 @@ class Collector {
   // }
 
   void collect(
-      ClassElement element, ConstantReader annotation, BuildStep buildStep) {
-    final String className = element.name;
-    final String path = annotation.peek('path')?.stringValue;
+      Element element, ConstantReader annotation, BuildStep buildStep) {
+    final String className = element.displayName;
+    final String path = annotation.peek('path')!.stringValue;
     //记录路径和被注解的类的类型
     routerMap[path] = className;
     // if (element.constructors.length > 0) {

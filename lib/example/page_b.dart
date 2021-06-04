@@ -4,8 +4,8 @@ import 'package:flutter/widgets.dart';
 
 @MNRoute('/demo/pageb', params: {'parama': 'b'})
 class B extends Widget{
-  int a;
-  String b;
+  int? a;
+  String? b;
   B() : super();
 
   @override

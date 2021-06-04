@@ -9,6 +9,6 @@ class Router {
 }
 
 class MyRouteOption {
-  String pathPattern;
-  Map<String, dynamic> params;
+  String? pathPattern;
+  Map<String, dynamic>? params;
 }

@@ -23,7 +23,7 @@ class MNRouterManager {
   }
 
   ///通过路径获取对应的页面对象（新的）。
-  static Widget getPage(String path) {
+  static Widget? getPage(String path) {
     var pageCreater = _routerMap[path];
     if (pageCreater != null) {
       return pageCreater();
