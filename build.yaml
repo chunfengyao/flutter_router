@@ -2,32 +2,40 @@
 targets:
   $default:
     builders:
-      manniu_router|route_builder:
+#      source_gen|combining_builder:
+#        options:
+#          ignore_for_file:
+#            - lint_alpha
+#            - lint_beta
+      manniu_router|route_collector:
         enabled: true
         generate_for:
           exclude: ['**.g.dart', '**.manniu_router_part.g.dart', '**.manniu_router.g.dart']
-      manniu_router|route_write_builder:
+#          include: ['.dart']
+      manniu_router|route_generator:
         enabled: true
         options: { 'write': true }
         generate_for:
           exclude: ['**.g.dart', '**.manniu_router_part.g.dart', '**.manniu_router.g.dart']
+#          include: ['.dart']
 
 builders:
-  route_write_builder:
+# 收集路由的生成器(先跑)
+  route_collector:
+    import: 'package:manniu_router/builder.dart'
+    builder_factories: ['routeCollectBuilder']
+    build_extensions: { '.dart': ['.manniu_router_part.g.dart'] }
+    auto_apply: root_package
+    build_to: source
+#    applies_builders: [ "source_gen|combining_builder" ]
+    #   保证先跑收集路由的生成器
+    runs_before: ['manniu_router|route_generator']
+
+# 生成路由表的生成器
+  route_generator:
     import: 'package:manniu_router/builder.dart'
     builder_factories: ['routeWriteBuilder']
-    build_extensions: { '.dart': ['.manniu_router_part.g.dart'] }
-    auto_apply: dependents
-    build_to: cache
-    applies_builders: ["source_gen|combining_builder"]
-
-  route_builder:
-    import: 'package:manniu_router/builder.dart'
-    builder_factories: ['routeBuilder']
     build_extensions: { '.dart': ['.manniu_router.g.dart'] }
     auto_apply: root_package
-    runs_before: ['manniu_router|route_write_builder']
-    auto_apply: dependents
-    build_to: cache
-    applies_builders: ["source_gen|combining_builder"]
-    
+    build_to: source
+#    applies_builders: [ "source_gen|combining_builder" ]

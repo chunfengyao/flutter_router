@@ -9,8 +9,7 @@ class MNRoute {
   /**
    * Used to math a route
    */
-  final Map<String, dynamic> params;
-  const MNRoute(this.path, {this.params});
+  const MNRoute(this.path);
 }
 
 /**

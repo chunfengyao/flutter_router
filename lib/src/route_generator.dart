@@ -7,25 +7,21 @@ import '../route.dart';
 import 'collector.dart';
 import 'writer.dart';
 
-class RouteWriterGenerator extends GeneratorForAnnotation<MNRouteRoot> {
-  Collector collector() {
-    return RouteGenerator.collector;
-  }
+Collector routeCollector = Collector();
+
+class RouteCollector extends GeneratorForAnnotation<MNRoute> {
 
   @override
-  dynamic generateForAnnotatedElement(
-      Element element, ConstantReader annotation, BuildStep buildStep) {
-    return Writer(collector()).write();
+  dynamic generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
+    routeCollector.collect(element, annotation, buildStep);
+    return null;
   }
 }
 
-class RouteGenerator extends GeneratorForAnnotation<MNRoute> {
-  static Collector collector = Collector();
+class RouteGenerator extends GeneratorForAnnotation<MNRouteRoot> {
 
   @override
-  dynamic generateForAnnotatedElement(
-      Element element, ConstantReader annotation, BuildStep buildStep) {
-    collector.collect(element, annotation, buildStep);
-    return null;
+  dynamic generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
+    return Writer(routeCollector).write();
   }
 }
