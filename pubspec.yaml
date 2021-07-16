@@ -1,6 +1,6 @@
 name: manniu_router
 description: 蛮牛-路由生成器
-version: 1.0.1
+version: 1.0.2
 author: voicewitness<voicewitness@gmail.com>
 homepage: https://github.com/alibaba-flutter/annotation_route
 
