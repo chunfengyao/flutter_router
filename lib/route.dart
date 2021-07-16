@@ -9,7 +9,7 @@ class MNRoute {
   /**
    * Used to name a route, prepare for generator entrance page.
    */
-  final String pageName;
+  final String? pageName;
   /**
    * Used to math a route
    */
