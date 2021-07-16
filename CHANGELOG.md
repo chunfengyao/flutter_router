@@ -1,13 +1,7 @@
 ## 0.0.1
 
-- Ready for experimentation.
+- 蛮牛路由的基础版本。
 
-## 0.0.1+1
+## 1.0.1
 
-- Format code by lint rules.
-
-## 0.0.2
-
-- Remove dependency to \$RouteOption.
-- Name Change: replace \$ to 'A' for prefix
-- Make abstract class to expouse the usable API
+- 添加一些注释。调整了build库的配置文件。添加了desc的设置（暂时未实现，先预留）
