@@ -13,10 +13,10 @@ class MNRouterImpl{
     return _routerMap.containsKey(path);
   }
 
-  static Widget findPage(String path) {
-    MNRouterCreatePage func;
+  static Widget? findPage(String path) {
+    MNRouterCreatePage? func;
     if((func = _routerMap[path]) != null) {
-      return func();
+      return func!();
     }else{
       return null;
     }

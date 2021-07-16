@@ -3,8 +3,8 @@ import 'package:flutter/widgets.dart';
 
 @MNRoute('/demo/pagec')
 class C extends Widget{
-  int a;
-  String b;
+  int? a;
+  String? b;
   C() : super();
 
   @override
