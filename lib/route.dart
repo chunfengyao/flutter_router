@@ -7,9 +7,14 @@ class MNRoute {
    */
   final String path;
   /**
+   * Used to name a route, prepare for generator entrance page.
+   */
+  final String pageName;
+  /**
    * Used to math a route
    */
-  const MNRoute(this.path);
+  const MNRoute(this.path, {this.pageName});
+
 }
 
 /**
