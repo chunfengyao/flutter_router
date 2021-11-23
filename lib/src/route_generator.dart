@@ -47,13 +47,14 @@ class RouteCollector extends GeneratorForAnnotation<MNRoute> {
         handleSet.add(element);
       }
     });
-    //运行第一块
-    result.addAll(await builderRunner(phaseNumber, handleSet));
     //运行第二块
     if(lastSet.length > 0){
+      //运行第一块
+      result.addAll(await builderRunner(phaseNumber, handleSet));
       result.addAll(await builderRunner(phaseNumber, lastSet));
     }else{
-      throw Exception('您未定义路由表输出文件，或者您的路由表文件后缀名有误！正确的后缀名："' + RouteMapFileExtention + '"');
+      print('******当前模块未定义路由表输出文件！将不会在当前模块输出路由表！******');
+      print('******正确的路由表的后缀名："' + RouteMapFileExtention + '"******');
     }
     return result;
   }
