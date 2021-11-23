@@ -5,7 +5,7 @@ class MNRoute {
   /**
    * Used to match a route, and will the first match condition
    */
-  final String path;
+  final String? path;
   /**
    * Used to name a route, prepare for generator entrance page.
    */
@@ -14,6 +14,7 @@ class MNRoute {
    * Used to math a route
    */
   const MNRoute(this.path, {this.pageName});
+  const MNRoute.Root({this.path, this.pageName});
 
 }
 
