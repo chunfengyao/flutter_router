@@ -2,10 +2,11 @@
  * Annotation class that supports you annotate a route page with @MNRoute
  */
 class MNRoute {
+  final bool isRouteMap;
   /**
    * Used to match a route, and will the first match condition
    */
-  final String path;
+  final String? path;
   /**
    * Used to name a route, prepare for generator entrance page.
    */
@@ -13,7 +14,8 @@ class MNRoute {
   /**
    * Used to math a route
    */
-  const MNRoute(this.path, {this.pageName});
+  const MNRoute(this.path, {this.pageName, this.isRouteMap = false});
+  const MNRoute.Root({this.path, this.pageName, this.isRouteMap = true});
 
 }
 

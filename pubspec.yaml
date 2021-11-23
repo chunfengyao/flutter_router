@@ -1,6 +1,6 @@
 name: manniu_router
 description: Manniu-routeGenerator
-version: 1.0.2
+version: 2.0.0
 author: voicewitness<voicewitness@gmail.com>
 homepage: https://github.com/alibaba-flutter/annotation_route
 
@@ -12,9 +12,25 @@ dependencies:
     sdk: flutter
   analyzer: any
   build: any
-  source_gen: '>=0.8.0'
-  build_config: '>=0.3.0'
+  source_gen: '>=1.1.1'
+  build_config: '>=1.0.0'
 dev_dependencies:
-  build_runner: '>=0.9.1'
+  build_runner: '>=2.1.5'
   test: any
 
+dependency_overrides:
+  source_gen:
+    git:
+      url: git@10.241.65.201:frameworkGroup/manniu-pub/source_gen.git
+      ref: patched_source_gen_1.1.1
+      path: source_gen/
+  build_runner_core:
+    git:
+      url: git@10.241.65.201:frameworkGroup/manniu-pub/build.git
+      ref: patched_build_runner_2.1.5
+      path: build_runner_core/
+  build:
+    git:
+      url: git@10.241.65.201:frameworkGroup/manniu-pub/build.git
+      ref: patched_build_runner_2.1.5
+      path: build/

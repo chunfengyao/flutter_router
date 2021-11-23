@@ -1,6 +1,6 @@
 import 'package:manniu_router/route.dart';
 
-@MNRouteRoot()
+@MNRoute.Root()
 class Router {
 
 }
