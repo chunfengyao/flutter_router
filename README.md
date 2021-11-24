@@ -1,12 +1,11 @@
 # 简介
 
-一个以注解方式实现的路由映射解决方案，基于 source_gen
+一个以注解方式实现的路由映射解决方案，基于 build_runner
 
 # 使用
 
 1. **注意**: 你的页面应该实现构造器，然后使用@MNRoute 注解你的页面类，并且填入路由地址（建议通过Constant类引用，避免使用魔法值）。
    例：
-
    ```Dart
    @MNRoute('/demo/pagePath')
    class A {
@@ -18,7 +17,7 @@
    例：
 
    ```Dart
-   @MNRouteRoot()
+   @MNRoute.Root()
    class ModuleRoot {}
    ```
 
@@ -78,7 +77,7 @@ dev_dependencies:
   manniu_router:
     git:
       url: 'git@10.241.65.201:flutter/manniu-pub/manniu-router.git'
-      ref: 'master'
+      ref: ^2.0.2
 ```
 
 ## 从源码安装
