@@ -10,3 +10,12 @@ import 'package:flutter/widgets.dart';
 typedef MNRouterFindPage = Widget Function(String path);
 typedef MNRouterPushRoute = void Function(Widget widget);
 typedef MNRouterCreatePage =  Widget Function();
+
+class MNRouterItem {
+  late MNRouterCreatePage creator;
+  List<String>? tags;
+  Map<String, String?>? options;
+
+  MNRouterItem(this.creator, {this.tags = null, this.options = null});
+
+}

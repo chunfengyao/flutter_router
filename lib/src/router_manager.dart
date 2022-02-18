@@ -12,11 +12,12 @@ import 'package:manniu_router/src/router_function_define.dart';
 /// 蛮牛路由管理类
 /// <pre/>
 class MNRouterManager {
-  static final Map<String, MNRouterCreatePage> _routerMap = {};
+  static final Map<String, MNRouterItem> _routerMap = {};
+  @Deprecated("请使用options")
   static final Map<int, dynamic> _paramsStorage = {};
 
   ///往全局存储池中添加路由表
-  static void addRouter(Map<String, MNRouterCreatePage> routerPageProvider) {
+  static void addRouter(Map<String, MNRouterItem> routerPageProvider) {
     //如果groupName已经存在，则直接报错！！！
     //添加到路由列表
     _routerMap.addAll(routerPageProvider);
@@ -24,9 +25,9 @@ class MNRouterManager {
 
   ///通过路径获取对应的页面对象（新的）。
   static Widget? getPage(String path) {
-    var pageCreater = _routerMap[path];
-    if (pageCreater != null) {
-      return pageCreater();
+    var routeItem = _routerMap[path];
+    if (routeItem != null) {
+      return routeItem.creator();
     }
     return null;
   }
@@ -42,17 +43,58 @@ class MNRouterManager {
   }
 
   ///为指定页面对象替换或者添加params，params允许为空：效果为移除现有参数。
+  @Deprecated("请使用options")
   static void putParams(Widget pageObj, dynamic params){
     if(pageObj == null){
-       return;
+      return;
     }
     _paramsStorage[pageObj.hashCode] = params;
   }
 
   ///只能获取一次，第二次为空
+  @Deprecated("请使用options")
   static dynamic _getParamsForWidget(Widget pageObj) {
     //通过pageObj的hashCode作为关键字！
     return _paramsStorage.remove(pageObj.hashCode);
+  }
+
+  ///为指定路由对象或者添加全局属性值，属性值允许为空：效果为移除现有参数。
+  static void putOptions(String routePath, Map<String, String?> options){
+    if(routePath == null){
+      return;
+    }
+    MNRouterItem? item = _routerMap[routePath];
+    if(item != null){
+      if(item.options == null){
+        item.options = Map();
+      }
+      item.options!.addAll(options);
+    }else{
+      throw Exception("未从路由表中找到该路由:" + routePath);
+    }
+  }
+
+  static Map<String, String?>? getOptionsForRoute(String routePath) {
+    return _routerMap[routePath]?.options;
+  }
+
+  static void clearOptionsForRoute(String routePath) {
+    _routerMap[routePath]?.options = null;
+  }
+
+  ///为指定路由对象或者添加标签。
+  static void addTagsForRoute(String routePath, List<String> tags){
+
+  }
+
+  static void removeTagsForRoute(String routePath, List<String> tags) {
+    for (var tag in tags) {
+      _routerMap[routePath]?.tags?.remove(tag);
+    }
+  }
+
+  static void clearTagsForRoute(String routePath) {
+    _routerMap[routePath]?.tags = null;
   }
 
 }
