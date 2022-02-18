@@ -80,8 +80,8 @@ class RouteGenerator extends ControlableBuilder {
           bool isRootMap = rootMapMarkItem.toBoolValue() ?? false;
           //是否是根路由
           if (isRootMap) {
-            // writeOutput(
-            //     buildStep, extension, getContent(importList, routerMap));
+            writeOutput(
+                buildStep, extension, getContent(importList, routerMap));
             //TODO 这边要return整个流程
             return;
           } else {
