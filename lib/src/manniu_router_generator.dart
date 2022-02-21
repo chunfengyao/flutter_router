@@ -188,7 +188,7 @@ class RouteGenerator extends ControlableBuilder {
   @override
   Map<String, List<String>> get buildExtensions => {
         '.dart': [
-          ".g.dart",
+          ".manniu_router.g.dart",
         ]
       };
 

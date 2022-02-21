@@ -20,7 +20,7 @@ builders:
   route_collector:
     import: 'package:manniu_router/builder.dart'
     builder_factories: ['routeCollectBuilder']
-    build_extensions: { '.dart': ['.g.dart'] }
+    build_extensions: { '.dart': ['.manniu_router.g.dart'] }
     auto_apply: root_package
     build_to: source
 #    applies_builders: [ "source_gen|combining_builder" ]
