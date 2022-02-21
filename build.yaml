@@ -12,7 +12,7 @@ targets:
         options:
           ignoreCache: true
         generate_for:
-          exclude: ['**.g.dart', '**.manniu_router_part.g.dart', '**.manniu_router.g.dart']
+          exclude: ['**.g.dart']
 #          include: ['.dart']
 
 builders:
