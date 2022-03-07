@@ -71,7 +71,7 @@ class RouteGenerator extends ControlableBuilder {
     Iterable<Element> allElements = libraryElement.topLevelElements;
     for (var element in allElements) {
       if (!(element is ClassElement || element is PropertyAccessorElement)) {
-        log.warning('Warn : 跳过处理："${element.displayName}"在文件"${buildStep.inputId}"中，仅支持类注解！！！');
+        log.warning('Warn: Ignore class: "${element.displayName}" in file: "${buildStep.inputId}". annotation workable on class only! ! !');
         return;
       }
       for (ElementAnnotation annotation in element.metadata) {
@@ -100,8 +100,8 @@ class RouteGenerator extends ControlableBuilder {
             if (pathItem != null) {
               String? path = pathItem.toStringValue();
               if (path == null || path.trim() == "") {
-                log.warning('Error : "${className}": 不支持路由地址为空！！！');
-                throw Exception('"${className}": 不支持路由地址为空！！！');
+                log.warning('Error : "${className}": route path must not null! ! !');
+                throw Exception('"${className}": route path must not null! ! !');
               }
               log.info(
                   '\n==> Found Route: ==> Path："${path}" ==> Class: ${className}${(pageName == null || pageName.trim() == "") ? "" : "==> PageName:" + pageName}'
