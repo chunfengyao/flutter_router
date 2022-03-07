@@ -70,7 +70,8 @@ class RouteGenerator extends ControlableBuilder {
         .libraryFor(buildStep.inputId, allowSyntaxErrors: false);
     Iterable<Element> allElements = libraryElement.topLevelElements;
     for (var element in allElements) {
-      if (!(element is ClassElement)) {
+      if (!(element is ClassElement || element is PropertyAccessorElement)) {
+        log.warning('Warn : 跳过处理："${element.displayName}"在文件"${buildStep.inputId}"中，仅支持类注解！！！');
         return;
       }
       for (ElementAnnotation annotation in element.metadata) {
@@ -99,11 +100,11 @@ class RouteGenerator extends ControlableBuilder {
             if (pathItem != null) {
               String? path = pathItem.toStringValue();
               if (path == null || path.trim() == "") {
-                log.warning('Error : ${className}: 不支持路由地址为空！！！');
-                throw Exception('${className}: 不支持路由地址为空！！！');
+                log.warning('Error : "${className}": 不支持路由地址为空！！！');
+                throw Exception('"${className}": 不支持路由地址为空！！！');
               }
               log.info(
-                  '\n==> Found New Route: ==> Path：${path} ==> Class: ${className}${(pageName == null || pageName.trim() == "") ? "" : "==> PageName:" + pageName}'
+                  '\n==> Found Route: ==> Path："${path}" ==> Class: ${className}${(pageName == null || pageName.trim() == "") ? "" : "==> PageName:" + pageName}'
               );
               List<String> tags = [];
               obj.getField("tags")?.toListValue()?.forEach((element) {
