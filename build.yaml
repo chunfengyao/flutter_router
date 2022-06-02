@@ -1,0 +1,26 @@
+# Read about `build.yaml` at https://pub.dartlang.org/packages/build_config
+targets:
+  $default:
+    builders:
+#      source_gen|combining_builder:
+#        options:
+#          ignore_for_file:
+#            - lint_alpha
+#            - lint_beta
+      manniu_router|route_collector:
+        enabled: true
+        options:
+          ignoreCache: true
+        generate_for:
+          exclude: ['**.g.dart']
+#          include: ['.dart']
+
+builders:
+# 收集路由的生成器(先跑)
+  route_collector:
+    import: 'package:manniu_router/builder.dart'
+    builder_factories: ['routeCollectBuilder']
+    build_extensions: { '.dart': ['.route.g.dart'] }
+    auto_apply: root_package
+    build_to: source
+#    applies_builders: [ "source_gen|combining_builder" ]
